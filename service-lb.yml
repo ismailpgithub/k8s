@@ -1,0 +1,14 @@
+#with LB you need the external cloud provider which exposes the ports from the external IP
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-lb
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 # This port can be any valid port within the NodePort range
+  type: LoadBalancer
